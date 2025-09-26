@@ -34,13 +34,8 @@ jobs:
     - name: Build frontend
       run: cd frontend && npm run build
     
-    - name: Run backend tests
-      run: cd backend && npm test
-      continue-on-error: true
-    
-    - name: Run frontend tests
-      run: cd frontend && npm test
-      continue-on-error: true
+    - name: Skip tests (no test scripts configured)
+      run: echo "Tests skipped - no test scripts found in package.json"
 
   deploy-backend:
     needs: test
