@@ -40,6 +40,11 @@ app.use('/uploads', express.static(config.upload.dir));
 // API маршрути
 app.use('/api', routes);
 
+// Test route
+app.get('/test', (req, res) => {
+  res.json({ message: 'Backend is working!', timestamp: new Date().toISOString() });
+});
+
 // Обробка помилок
 app.use(notFoundHandler);
 app.use(errorHandler);
