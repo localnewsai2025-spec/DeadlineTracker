@@ -22,7 +22,13 @@ export const LoginPage: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormData>();
+    setValue,
+  } = useForm<LoginFormData>({
+    defaultValues: {
+      email: 'admin@example.com',
+      password: 'password123',
+    },
+  });
 
   const onSubmit = async (data: LoginFormData) => {
     console.log('📝 Form submitted with:', data);
@@ -62,7 +68,6 @@ export const LoginPage: React.FC = () => {
                 label="Email"
                 type="email"
                 placeholder="your@email.com"
-                defaultValue="admin@example.com"
                 error={errors.email?.message}
                 {...register('email', {
                   required: 'Email обов\'язковий',
@@ -77,7 +82,6 @@ export const LoginPage: React.FC = () => {
                 label="Пароль"
                 type="password"
                 placeholder="••••••••"
-                defaultValue="password123"
                 error={errors.password?.message}
                 {...register('password', {
                   required: 'Пароль обов\'язковий',
@@ -92,6 +96,7 @@ export const LoginPage: React.FC = () => {
                 type="submit"
                 className="w-full"
                 disabled={isLoading}
+                onClick={() => console.log('🔘 Button clicked!')}
               >
                 {isLoading ? (
                   <>
