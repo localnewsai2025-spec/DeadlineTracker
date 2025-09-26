@@ -10,7 +10,7 @@ class ApiClient {
     
     this.client = axios.create({
       baseURL: `${apiUrl}/api`,
-      timeout: 10000,
+      timeout: 30000, // Increased timeout to 30 seconds for Render free tier
       headers: {
         'Content-Type': 'application/json',
       },

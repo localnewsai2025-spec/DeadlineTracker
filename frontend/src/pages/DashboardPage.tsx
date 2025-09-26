@@ -19,6 +19,8 @@ export const DashboardPage: React.FC = () => {
     () => taskService.getTasks({}, { limit: 10, sortBy: 'deadline', sortOrder: 'asc' }),
     {
       select: (data) => data.data,
+      retry: 2, // Retry failed requests 2 times
+      retryDelay: 1000, // Wait 1 second between retries
     }
   );
 
@@ -27,6 +29,8 @@ export const DashboardPage: React.FC = () => {
     () => projectService.getProjects({}, { limit: 5, sortBy: 'createdAt', sortOrder: 'desc' }),
     {
       select: (data) => data.data,
+      retry: 2, // Retry failed requests 2 times
+      retryDelay: 1000, // Wait 1 second between retries
     }
   );
 
@@ -35,6 +39,8 @@ export const DashboardPage: React.FC = () => {
     () => taskService.getOverdueTasks(),
     {
       select: (data) => data,
+      retry: 2, // Retry failed requests 2 times
+      retryDelay: 1000, // Wait 1 second between retries
     }
   );
 
@@ -43,6 +49,8 @@ export const DashboardPage: React.FC = () => {
     () => taskService.getUpcomingTasks(7),
     {
       select: (data) => data,
+      retry: 2, // Retry failed requests 2 times
+      retryDelay: 1000, // Wait 1 second between retries
     }
   );
 
