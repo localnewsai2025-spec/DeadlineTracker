@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import { useAuth } from '../contexts/AuthContext';
+// import { useAuth } from '../contexts/AuthContext';
 import { projectService } from '../services/projectService';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
@@ -10,9 +10,9 @@ import { Link } from 'react-router-dom';
 import { Plus, Eye, Edit, Trash2, Users, Calendar } from 'lucide-react';
 
 export const ProjectsPage: React.FC = () => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
-  const { data: projects, isLoading: projectsLoading, refetch } = useQuery(
+  const { data: projects, isLoading: projectsLoading } = useQuery(
     'projects',
     () => projectService.getProjects({}, { limit: 50, sortBy: 'createdAt', sortOrder: 'desc' }),
     {
@@ -97,7 +97,7 @@ export const ProjectsPage: React.FC = () => {
                         </div>
                       </div>
                       <Badge variant="secondary">
-                        {project.type}
+                        {project.status}
                       </Badge>
                     </div>
                   </div>

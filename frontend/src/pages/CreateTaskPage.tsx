@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+// import { useAuth } from '../contexts/AuthContext';
 import { taskService } from '../services/taskService';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ArrowLeft, Save } from 'lucide-react';
+import { TaskPriority } from '../types';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
@@ -15,13 +16,13 @@ interface TaskFormData {
   title: string;
   description: string;
   deadline: string;
-  priority: 'LOW' | 'MEDIUM' | 'HIGH' | 'URGENT';
+  priority: TaskPriority;
   status: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
 }
 
 export const CreateTaskPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const navigate = useNavigate();
 
   const {
@@ -33,7 +34,7 @@ export const CreateTaskPage: React.FC = () => {
       title: '',
       description: '',
       deadline: '',
-      priority: 'MEDIUM',
+      priority: TaskPriority.MEDIUM,
       status: 'PENDING',
     },
   });
@@ -128,10 +129,10 @@ export const CreateTaskPage: React.FC = () => {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   {...register('priority')}
                 >
-                  <option value="LOW">Низький</option>
-                  <option value="MEDIUM">Середній</option>
-                  <option value="HIGH">Високий</option>
-                  <option value="URGENT">Терміновий</option>
+                  <option value={TaskPriority.LOW}>Низький</option>
+                  <option value={TaskPriority.MEDIUM}>Середній</option>
+                  <option value={TaskPriority.HIGH}>Високий</option>
+                  <option value={TaskPriority.URGENT}>Терміновий</option>
                 </select>
               </div>
 

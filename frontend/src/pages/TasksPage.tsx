@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import { useAuth } from '../contexts/AuthContext';
+// import { useAuth } from '../contexts/AuthContext';
 import { taskService } from '../services/taskService';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
@@ -11,9 +11,9 @@ import { Link } from 'react-router-dom';
 import { Plus, Eye, Edit, Trash2 } from 'lucide-react';
 
 export const TasksPage: React.FC = () => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
-  const { data: tasks, isLoading: tasksLoading, refetch } = useQuery(
+  const { data: tasks, isLoading: tasksLoading } = useQuery(
     'tasks',
     () => taskService.getTasks({}, { limit: 50, sortBy: 'deadline', sortOrder: 'asc' }),
     {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+// import { useAuth } from '../contexts/AuthContext';
 import { projectService } from '../services/projectService';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
@@ -19,7 +19,7 @@ interface ProjectFormData {
 
 export const CreateProjectPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const navigate = useNavigate();
 
   const {
