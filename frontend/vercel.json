@@ -11,8 +11,12 @@
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "https://deadlinetracker.onrender.com/api/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/dist/$1"
+      "dest": "/index.html"
     }
   ],
   "env": {

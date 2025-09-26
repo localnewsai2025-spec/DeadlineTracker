@@ -9,7 +9,7 @@ class ApiClient {
     console.log('🌐 API URL:', apiUrl);
     
     this.client = axios.create({
-      baseURL: apiUrl,
+      baseURL: `${apiUrl}/api`,
       timeout: 10000,
       headers: {
         'Content-Type': 'application/json',
