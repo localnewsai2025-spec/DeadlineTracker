@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 export const useNotifications = () => {
   const [isSupported, setIsSupported] = useState(false);
   const [permission, setPermission] = useState<NotificationPermission>('default');
-  const { user } = useAuth();
+  const { user: _user } = useAuth();
 
   useEffect(() => {
     // Перевіряємо підтримку сповіщень

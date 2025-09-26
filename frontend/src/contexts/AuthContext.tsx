@@ -57,7 +57,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         password,
       });
 
-      const { user: userData, token: authToken } = response.data;
+      const { user: userData, token: authToken } = response;
 
       setUser(userData);
       setToken(authToken);
@@ -79,7 +79,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       const response = await apiClient.post<AuthResponse>('/auth/register', userData);
 
-      const { user: newUser, token: authToken } = response.data;
+      const { user: newUser, token: authToken } = response;
 
       setUser(newUser);
       setToken(authToken);

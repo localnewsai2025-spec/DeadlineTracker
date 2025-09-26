@@ -139,12 +139,12 @@ export const DashboardPage: React.FC = () => {
                     Ваші нещодавні завдання
                   </CardDescription>
                 </div>
-                <Button asChild size="sm">
-                  <Link to="/tasks">
+                <Link to="/tasks">
+                  <Button size="sm">
                     <Eye className="w-4 h-4 mr-2" />
                     Всі завдання
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </div>
             </CardHeader>
             <CardContent>
@@ -172,12 +172,12 @@ export const DashboardPage: React.FC = () => {
               ) : (
                 <div className="text-center py-8">
                   <p className="text-gray-500">Немає завдань</p>
-                  <Button asChild className="mt-4">
-                    <Link to="/tasks/new">
+                  <Link to="/tasks/new">
+                    <Button className="mt-4">
                       <Plus className="w-4 h-4 mr-2" />
                       Створити завдання
-                    </Link>
-                  </Button>
+                    </Button>
+                  </Link>
                 </div>
               )}
             </CardContent>
@@ -193,12 +193,12 @@ export const DashboardPage: React.FC = () => {
                     Ваші проєкти та курси
                   </CardDescription>
                 </div>
-                <Button asChild size="sm">
-                  <Link to="/projects">
+                <Link to="/projects">
+                  <Button size="sm">
                     <Eye className="w-4 h-4 mr-2" />
                     Всі проєкти
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </div>
             </CardHeader>
             <CardContent>
