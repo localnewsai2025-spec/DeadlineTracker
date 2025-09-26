@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { User, AuthResponse } from '../types';
+import { User, AuthResponse, ApiResponse } from '../types';
 import { apiClient } from '../utils/api';
 import toast from 'react-hot-toast';
 
@@ -64,7 +64,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = async (email: string, password: string) => {
     try {
       console.log('🔐 Attempting login with:', { email, password: '***' });
-      const response = await apiClient.post<AuthResponse>('/auth/login', {
+      const response = await apiClient.post<ApiResponse<AuthResponse>>('/auth/login', {
         email,
         password,
       });
