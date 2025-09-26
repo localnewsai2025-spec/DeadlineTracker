@@ -45,7 +45,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     console.log('🔄 AuthContext init:', { storedToken, storedUser });
 
-    if (storedToken && storedUser) {
+    if (storedToken && storedUser && storedToken !== 'undefined' && storedUser !== 'undefined') {
       try {
         const parsedUser = JSON.parse(storedUser);
         console.log('✅ Parsed user:', parsedUser);
@@ -72,12 +72,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       console.log('✅ Login response:', response);
       
       // Check if response has the expected structure
-      if (!response || !response.user || !response.token) {
+      if (!response || !response.data) {
         console.error('❌ Invalid response structure:', response);
         throw new Error('Invalid response from server');
       }
 
-      const { user: userData, token: authToken } = response;
+      // Extract user and token from response.data
+      const { user: userData, token: authToken } = response.data;
 
       console.log('👤 User data:', userData);
       console.log('🔑 Token:', authToken);
