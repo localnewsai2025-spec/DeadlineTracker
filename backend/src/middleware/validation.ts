@@ -7,7 +7,7 @@ export const handleValidationErrors = (req: Request, res: Response, next: NextFu
   
   if (!errors.isEmpty()) {
     const errorMessages = errors.array().map(error => error.msg);
-    ResponseUtils.badRequest(res, 'Помилки валідації', errorMessages.join(', '));
+    ResponseUtils.badRequest(res, 'Помилки валідації: ' + errorMessages.join(', '));
     return;
   }
   

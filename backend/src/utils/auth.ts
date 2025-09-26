@@ -16,7 +16,7 @@ export class AuthUtils {
   static generateToken(payload: { id: string; email: string; role: UserRole }): string {
     return jwt.sign(payload, config.jwt.secret, {
       expiresIn: config.jwt.expiresIn,
-    });
+    } as jwt.SignOptions);
   }
 
   static verifyToken(token: string): { id: string; email: string; role: UserRole } | null {
