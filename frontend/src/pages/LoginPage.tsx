@@ -22,6 +22,7 @@ export const LoginPage: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<LoginFormData>({
     defaultValues: {
       email: 'admin@deadlinetracker.com',
@@ -29,8 +30,16 @@ export const LoginPage: React.FC = () => {
     },
   });
 
+  // Set values on mount
+  React.useEffect(() => {
+    setValue('email', 'admin@deadlinetracker.com');
+    setValue('password', 'admin123');
+  }, [setValue]);
+
   const onSubmit = async (data: LoginFormData) => {
     console.log('📝 Form submitted with:', data);
+    console.log('📧 Email:', data.email);
+    console.log('🔑 Password:', data.password);
     setIsLoading(true);
     try {
       await login(data.email, data.password);
