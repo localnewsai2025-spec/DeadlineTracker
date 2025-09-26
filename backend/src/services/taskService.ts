@@ -461,6 +461,61 @@ export class TaskService {
     });
   }
 
+  static async getTaskStats(userId: string) {
+    const [total, completed, pending, overdue] = await Promise.all([
+      prisma.task.count({
+        where: {
+          OR: [
+            { assigneeId: userId },
+            { creatorId: userId },
+          ],
+        },
+      }),
+      prisma.task.count({
+        where: {
+          OR: [
+            { assigneeId: userId },
+            { creatorId: userId },
+          ],
+          status: TaskStatus.COMPLETED,
+        },
+      }),
+      prisma.task.count({
+        where: {
+          OR: [
+            { assigneeId: userId },
+            { creatorId: userId },
+          ],
+          status: {
+            in: [TaskStatus.NOT_STARTED, TaskStatus.IN_PROGRESS],
+          },
+        },
+      }),
+      prisma.task.count({
+        where: {
+          OR: [
+            { assigneeId: userId },
+            { creatorId: userId },
+          ],
+          deadline: {
+            lt: new Date(),
+          },
+          status: {
+            not: TaskStatus.COMPLETED,
+          },
+        },
+      }),
+    ]);
+
+    return {
+      total,
+      completed,
+      pending,
+      overdue,
+      completionRate: total > 0 ? Math.round((completed / total) * 100) : 0,
+    };
+  }
+
   private static async isProjectMember(userId: string, projectId: string): Promise<boolean> {
     const member = await prisma.projectMember.findUnique({
       where: {

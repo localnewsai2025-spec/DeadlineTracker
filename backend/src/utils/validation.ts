@@ -160,3 +160,5 @@ export const validatePagination: ValidationChain[] = [
     .isIn(['asc', 'desc'])
     .withMessage('Порядок сортування повинен бути asc або desc'),
 ];
+
+export { handleValidationErrors } from '../middleware/validation';
