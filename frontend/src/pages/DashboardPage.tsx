@@ -222,12 +222,12 @@ export const DashboardPage: React.FC = () => {
               ) : (
                 <div className="text-center py-8">
                   <p className="text-gray-500">Немає проєктів</p>
-                  <Button asChild className="mt-4">
-                    <Link to="/projects/new">
+                  <Link to="/projects/new">
+                    <Button className="mt-4">
                       <Plus className="w-4 h-4 mr-2" />
                       Створити проєкт
-                    </Link>
-                  </Button>
+                    </Button>
+                  </Link>
                 </div>
               )}
             </CardContent>
@@ -253,11 +253,11 @@ export const DashboardPage: React.FC = () => {
                         Прострочено: {formatSmartDate(task.deadline)}
                       </p>
                     </div>
-                    <Button asChild size="sm" variant="outline">
-                      <Link to={`/tasks/${task.id}`}>
+                    <Link to={`/tasks/${task.id}`}>
+                      <Button size="sm" variant="outline">
                         Переглянути
-                      </Link>
-                    </Button>
+                      </Button>
+                    </Link>
                   </div>
                 ))}
               </div>

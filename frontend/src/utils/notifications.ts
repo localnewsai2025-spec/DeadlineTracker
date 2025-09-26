@@ -43,7 +43,7 @@ export const subscribeToPushNotifications = async (): Promise<string | null> => 
     // Підписуємося на push-сповіщення
     const subscription = await registration.pushManager.subscribe({
       userVisibleOnly: true,
-      applicationServerKey: process.env.REACT_APP_VAPID_PUBLIC_KEY,
+      applicationServerKey: import.meta.env.VITE_REACT_APP_VAPID_PUBLIC_KEY,
     });
 
     console.log('Підписка на push-сповіщення:', subscription);

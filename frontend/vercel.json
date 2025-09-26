@@ -16,6 +16,6 @@
     }
   ],
   "env": {
-    "REACT_APP_API_URL": "https://deadlinetracker.onrender.com"
+    "VITE_REACT_APP_API_URL": "https://deadlinetracker.onrender.com"
   }
 }
