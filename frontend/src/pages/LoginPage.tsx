@@ -24,8 +24,8 @@ export const LoginPage: React.FC = () => {
     formState: { errors },
   } = useForm<LoginFormData>({
     defaultValues: {
-      email: 'admin@example.com',
-      password: 'password123',
+      email: 'admin@deadlinetracker.com',
+      password: 'admin123',
     },
   });
 
@@ -124,13 +124,10 @@ export const LoginPage: React.FC = () => {
 
         <div className="text-center">
           <p className="text-xs text-gray-500">
-            Тестові облікові записи:
+            Облікові дані:
           </p>
           <div className="mt-2 space-y-1 text-xs text-gray-500">
-            <p>👑 Адмін: admin@example.com / password123</p>
-            <p>👨‍💼 Менеджер: manager@example.com / password123</p>
-            <p>👨‍🏫 Керівник: lead@example.com / password123</p>
-            <p>👨‍🎓 Студент: student1@example.com / password123</p>
+            <p>👑 Адмін: admin@deadlinetracker.com / admin123</p>
           </div>
         </div>
       </div>
