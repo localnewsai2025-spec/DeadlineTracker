@@ -25,11 +25,14 @@ export const LoginPage: React.FC = () => {
   } = useForm<LoginFormData>();
 
   const onSubmit = async (data: LoginFormData) => {
+    console.log('📝 Form submitted with:', data);
     setIsLoading(true);
     try {
       await login(data.email, data.password);
+      console.log('🎉 Login successful, navigating to dashboard');
       navigate('/dashboard');
     } catch (error) {
+      console.error('💥 Login failed:', error);
       // Error is handled by the auth context
     } finally {
       setIsLoading(false);

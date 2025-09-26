@@ -52,11 +52,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const login = async (email: string, password: string) => {
     try {
+      console.log('🔐 Attempting login with:', { email, password: '***' });
       const response = await apiClient.post<AuthResponse>('/auth/login', {
         email,
         password,
       });
 
+      console.log('✅ Login response:', response);
       const { user: userData, token: authToken } = response;
 
       setUser(userData);
@@ -66,6 +68,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
       toast.success('Успішний вхід в систему');
     } catch (error) {
+      console.error('❌ Login error:', error);
       throw error;
     }
   };

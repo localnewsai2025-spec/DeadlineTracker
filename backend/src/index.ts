@@ -10,6 +10,9 @@ import * as cron from 'node-cron';
 
 const app = express();
 
+// Trust proxy for Render
+app.set('trust proxy', 1);
+
 // Middleware для безпеки
 app.use(helmet());
 
