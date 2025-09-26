@@ -43,9 +43,20 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const storedToken = localStorage.getItem('token');
     const storedUser = localStorage.getItem('user');
 
+    console.log('🔄 AuthContext init:', { storedToken, storedUser });
+
     if (storedToken && storedUser) {
-      setToken(storedToken);
-      setUser(JSON.parse(storedUser));
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        console.log('✅ Parsed user:', parsedUser);
+        setToken(storedToken);
+        setUser(parsedUser);
+      } catch (error) {
+        console.error('❌ Error parsing stored user:', error);
+        // Clear invalid data
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+      }
     }
     setIsLoading(false);
   }, []);
@@ -59,10 +70,22 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       });
 
       console.log('✅ Login response:', response);
+      
+      // Check if response has the expected structure
+      if (!response || !response.user || !response.token) {
+        console.error('❌ Invalid response structure:', response);
+        throw new Error('Invalid response from server');
+      }
+
       const { user: userData, token: authToken } = response;
 
       console.log('👤 User data:', userData);
       console.log('🔑 Token:', authToken);
+
+      if (!userData || !authToken) {
+        console.error('❌ Missing user data or token');
+        throw new Error('Missing user data or token');
+      }
 
       setUser(userData);
       setToken(authToken);
