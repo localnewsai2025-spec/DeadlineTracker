@@ -59,6 +59,7 @@ export const LoginPage: React.FC = () => {
                 label="Email"
                 type="email"
                 placeholder="your@email.com"
+                defaultValue="admin@example.com"
                 error={errors.email?.message}
                 {...register('email', {
                   required: 'Email обов\'язковий',
@@ -73,6 +74,7 @@ export const LoginPage: React.FC = () => {
                 label="Пароль"
                 type="password"
                 placeholder="••••••••"
+                defaultValue="password123"
                 error={errors.password?.message}
                 {...register('password', {
                   required: 'Пароль обов\'язковий',
