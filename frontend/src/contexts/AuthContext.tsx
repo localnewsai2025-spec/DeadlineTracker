@@ -61,10 +61,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       console.log('✅ Login response:', response);
       const { user: userData, token: authToken } = response;
 
+      console.log('👤 User data:', userData);
+      console.log('🔑 Token:', authToken);
+
       setUser(userData);
       setToken(authToken);
       localStorage.setItem('token', authToken);
       localStorage.setItem('user', JSON.stringify(userData));
+
+      console.log('✅ Auth state updated');
 
       toast.success('Успішний вхід в систему');
     } catch (error) {
