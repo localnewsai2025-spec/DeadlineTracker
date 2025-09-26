@@ -5,8 +5,11 @@ class ApiClient {
   private client: AxiosInstance;
 
   constructor() {
+    const apiUrl = import.meta.env.VITE_REACT_APP_API_URL || 'https://deadlinetracker.onrender.com';
+    console.log('🌐 API URL:', apiUrl);
+    
     this.client = axios.create({
-      baseURL: import.meta.env.VITE_REACT_APP_API_URL || '/api',
+      baseURL: apiUrl,
       timeout: 10000,
       headers: {
         'Content-Type': 'application/json',
@@ -16,6 +19,7 @@ class ApiClient {
     // Request interceptor to add auth token
     this.client.interceptors.request.use(
       (config) => {
+        console.log('📤 Making request to:', config.url);
         const token = localStorage.getItem('token');
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
