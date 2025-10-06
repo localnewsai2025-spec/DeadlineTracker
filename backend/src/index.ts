@@ -27,10 +27,10 @@ app.use(cors({
   credentials: true,
 }));
 
-// Rate limiting
+// Rate limiting - зменшено для Render
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 хвилин
-  max: 100, // максимум 100 запитів на IP за 15 хвилин
+  max: 50, // зменшено до 50 запитів
   message: 'Занадто багато запитів з цього IP, спробуйте пізніше',
 });
 app.use('/api/', limiter);
@@ -48,6 +48,11 @@ app.use('/api', routes);
 // Test route
 app.get('/test', (req, res) => {
   res.json({ message: 'Backend is working!', timestamp: new Date().toISOString() });
+});
+
+// Health check для Render
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
 // Обробка помилок
