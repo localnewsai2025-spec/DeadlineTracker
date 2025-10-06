@@ -1,6 +1,6 @@
 # 🚀 БЕЗКОШТОВНИЙ деплой DeadlineTracker
 
-## 🎯 Стек: Vercel + Supabase
+## 🎯 Стек: Vercel + Render + Supabase
 
 **💰 Вартість:** $0/місяць - **ПОВНІСТЮ БЕЗКОШТОВНО!**
 
@@ -8,60 +8,44 @@
 
 ## 📋 Крок 1: Supabase (PostgreSQL)
 
-1. **Зайди на [supabase.com](https://supabase.com)**
-2. **Sign in with GitHub**
-3. **New Project**
-4. **Налаштування:**
-   - Name: `deadline-tracker-db`
-   - Database Password: згенеруй надійний пароль
-   - Region: найближчий до тебе
-5. **Отримай Connection String:**
-   - Settings → Database
-   - Connection string → URI
-   - Скопіюй `postgresql://postgres:[PASSWORD]@[HOST]:5432/postgres`
+1. **Зайди в Supabase Dashboard**
+2. **SQL Editor → New Query**
+3. **Скопіюй SQL з файлу `supabase-schema.sql`**
+4. **Натисни "Run"**
 
 ---
 
-## 🌐 Крок 2: Vercel (Frontend + Backend)
+## 🌐 Крок 2: Render (Backend)
 
-1. **Зайди на [vercel.com](https://vercel.com)**
+1. **Зайди на [render.com](https://render.com)**
 2. **Sign in with GitHub**
-3. **New Project → Import Git Repository**
-4. **Виберіть репозиторій:** `localnewsai2025-spec/DeadlineTracker`
-5. **Налаштування:**
-   - Framework Preset: **Vite**
-   - Root Directory: `frontend`
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-6. **Змінні середовища:**
-   ```
-   NODE_ENV=production
-   JWT_SECRET=your-super-secret-jwt-key-here
-   DATABASE_URL=postgresql://postgres:[PASSWORD]@[HOST]:5432/postgres
-   ```
-7. **Деплой!** Vercel автоматично збудує все
+3. **New → Blueprint**
+4. **Підключи репозиторій:** `localnewsai2025-spec/DeadlineTracker`
+5. **Render автоматично:**
+   - Створить backend сервіс
+   - Створить PostgreSQL базу
+   - Налаштує всі змінні середовища
+6. **Отримай URL:** `https://deadline-tracker-backend.onrender.com`
 
 ---
 
-## 🔧 Крок 3: Налаштування бази даних
+## 🎨 Крок 3: Vercel (Frontend)
 
-1. **В Supabase:**
-   - SQL Editor → New Query
-   - Скопіюй схему з `backend/prisma/schema.prisma`
-   - Виконай SQL для створення таблиць
-
-2. **Або через Prisma:**
-   ```bash
-   cd backend
-   npx prisma db push
+1. **Зайди в Vercel Dashboard**
+2. **Settings → Environment Variables**
+3. **Додай змінну:**
    ```
+   VITE_REACT_APP_API_URL=https://deadline-tracker-backend.onrender.com
+   ```
+4. **Redeploy** проект
 
 ---
 
 ## ✅ Готово!
 
 **Твій проект тепер працює:**
-- 🌐 **Frontend + Backend:** `https://deadline-tracker.vercel.app`
+- 🎨 **Frontend:** `https://deadline-tracker-sand.vercel.app`
+- 🖥️ **Backend:** `https://deadline-tracker-backend.onrender.com`
 - 🗄️ **Database:** Supabase PostgreSQL
 
 **ВСЕ БЕЗКОШТОВНО!** 🎉
@@ -77,7 +61,9 @@
    git commit -m "Update"
    git push origin main
    ```
-3. **Vercel автоматично перезбудує все**
+3. **Автоматичний деплой:**
+   - Render автоматично перезбудує backend
+   - Vercel автоматично перезбудує frontend
 
 ---
 
@@ -88,11 +74,11 @@
 - Додай frontend URL в CORS origins
 
 ### Помилка підключення до БД
-- Перевір DATABASE_URL в Vercel
+- Перевір DATABASE_URL в Render
 - Перевір, чи створені таблиці в Supabase
 
 ### Помилка збірки
-- Перевір логи в Vercel
+- Перевір логи в Render/Vercel
 - Перевір, чи всі залежності встановлені
 
 ---
@@ -100,10 +86,10 @@
 ## 🎯 Переваги цього стеку
 
 - 🆓 **ПОВНІСТЮ БЕЗКОШТОВНО**
-- 🚀 **Один сервіс** - Vercel для всього
+- 🚀 **Render** - крутий для backend
+- 🎨 **Vercel** - крутий для frontend
 - 🗄️ **Supabase** - крутий веб-інтерфейс для БД
 - 📱 **Автоматичний деплой** з GitHub
 - ⚡ **Швидкий** та надійний
-- 🔧 **Простий моніторинг** та логи
 
 **Готово! Твій DeadlineTracker тепер працює БЕЗКОШТОВНО! 🎉**

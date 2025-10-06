@@ -5,7 +5,7 @@ class ApiClient {
   private client: AxiosInstance;
 
   constructor() {
-    const apiUrl = import.meta.env.VITE_REACT_APP_API_URL || 'https://deadline-tracker-sand.vercel.app';
+    const apiUrl = import.meta.env.VITE_REACT_APP_API_URL || 'https://deadline-tracker-backend.onrender.com';
     console.log('🌐 API URL:', apiUrl);
     
     this.client = axios.create({
