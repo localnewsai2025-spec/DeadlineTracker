@@ -9,6 +9,7 @@ import { TasksPage } from './pages/TasksPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { CreateTaskPage } from './pages/CreateTaskPage';
 import { CreateProjectPage } from './pages/CreateProjectPage';
+import { TaskDetailPage } from './pages/TaskDetailPage';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
                   <Route path="/dashboard" element={<DashboardPage />} />
                   <Route path="/tasks" element={<TasksPage />} />
                   <Route path="/tasks/new" element={<CreateTaskPage />} />
+                  <Route path="/tasks/:id" element={<TaskDetailPage />} />
                   <Route path="/projects" element={<ProjectsPage />} />
                   <Route path="/projects/new" element={<CreateProjectPage />} />
                   <Route path="/" element={<Navigate to="/dashboard" replace />} />
