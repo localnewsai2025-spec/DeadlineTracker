@@ -25,9 +25,15 @@ export const RegisterPage: React.FC = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<RegisterFormData>();
+  } = useForm<RegisterFormData>({
+    mode: 'onChange', // Validate on change
+  });
 
   const password = watch('password');
+  
+  // Debug: log form values
+  const watchedValues = watch();
+  console.log('👀 Watched values:', watchedValues);
 
   const onSubmit = async (data: RegisterFormData) => {
     console.log('📝 Form data:', data);
@@ -69,6 +75,7 @@ export const RegisterPage: React.FC = () => {
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit, (errors) => {
               console.log('❌ Form validation errors:', errors);
+              console.log('🔍 Detailed errors:', JSON.stringify(errors, null, 2));
             })} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <Input
