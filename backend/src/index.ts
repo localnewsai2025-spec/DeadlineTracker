@@ -20,7 +20,7 @@ app.use(helmet());
 app.use(cors({
   origin: [
     config.frontend.url,
-    'https://deadline-tracker.netlify.app',
+    'https://deadline-tracker.vercel.app',
     'http://localhost:5173'
   ],
   credentials: true,
