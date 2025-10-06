@@ -63,14 +63,14 @@ app.listen(PORT, () => {
   console.log(`🌍 Environment: ${config.nodeEnv}`);
 });
 
-// Планувальник для обробки нагадувань
-cron.schedule('* * * * *', async () => {
-  try {
-    await ReminderService.processReminders();
-  } catch (error) {
-    console.error('Помилка при обробці нагадувань:', error);
-  }
-});
+// Планувальник для обробки нагадувань - ВИМКНЕНО
+// cron.schedule('* * * * *', async () => {
+//   try {
+//     await ReminderService.processReminders();
+//   } catch (error) {
+//     console.error('Помилка при обробці нагадувань:', error);
+//   }
+// });
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
