@@ -138,7 +138,7 @@ export const validateCreateComment: ValidationChain[] = [
 
 export const validateId: ValidationChain[] = [
   param('id')
-    .isUUID()
+    .isLength({ min: 1 })
     .withMessage('Невірний ID'),
 ];
 
