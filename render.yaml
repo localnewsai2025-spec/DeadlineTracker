@@ -11,11 +11,5 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: DATABASE_URL
-        fromDatabase:
-          name: deadline-tracker-db
-          property: connectionString
+        value: postgresql://postgres:n+rG2Hb+E4ME7Sf@db.fqmahzjzhhywyjxriqvx.supabase.co:5432/postgres
     healthCheckPath: /api/health
-
-databases:
-  - name: deadline-tracker-db
-    plan: free

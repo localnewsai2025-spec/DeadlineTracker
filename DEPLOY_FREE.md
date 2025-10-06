@@ -23,8 +23,7 @@
 4. **Підключи репозиторій:** `localnewsai2025-spec/DeadlineTracker`
 5. **Render автоматично:**
    - Створить backend сервіс
-   - Створить PostgreSQL базу
-   - Налаштує всі змінні середовища
+   - Налаштує всі змінні середовища (включаючи Supabase DATABASE_URL)
 6. **Отримай URL:** `https://deadline-tracker-backend.onrender.com`
 
 ---
