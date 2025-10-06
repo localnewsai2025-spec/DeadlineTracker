@@ -14,7 +14,7 @@ import toast from 'react-hot-toast';
 interface ProjectFormData {
   name: string;
   description: string;
-  type: 'PROJECT' | 'COURSE' | 'GROUP';
+  status: 'ACTIVE' | 'ARCHIVED' | 'COMPLETED';
 }
 
 export const CreateProjectPage: React.FC = () => {
@@ -30,7 +30,7 @@ export const CreateProjectPage: React.FC = () => {
     defaultValues: {
       name: '',
       description: '',
-      type: 'PROJECT',
+      status: 'ACTIVE',
     },
   });
 
@@ -106,15 +106,15 @@ export const CreateProjectPage: React.FC = () => {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Тип
+                  Статус
                 </label>
                 <select
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  {...register('type')}
+                  {...register('status')}
                 >
-                  <option value="PROJECT">Проєкт</option>
-                  <option value="COURSE">Курс</option>
-                  <option value="GROUP">Група</option>
+                  <option value="ACTIVE">Активний</option>
+                  <option value="ARCHIVED">Архівний</option>
+                  <option value="COMPLETED">Завершений</option>
                 </select>
               </div>
 
