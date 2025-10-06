@@ -17,7 +17,7 @@ interface TaskFormData {
   description: string;
   deadline: string;
   priority: TaskPriority;
-  status: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
+  status: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED' | 'OVERDUE';
 }
 
 export const CreateTaskPage: React.FC = () => {
@@ -35,7 +35,7 @@ export const CreateTaskPage: React.FC = () => {
       description: '',
       deadline: '',
       priority: TaskPriority.MEDIUM,
-      status: 'PENDING',
+      status: 'NOT_STARTED',
     },
   });
 
@@ -144,10 +144,10 @@ export const CreateTaskPage: React.FC = () => {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   {...register('status')}
                 >
-                  <option value="PENDING">Очікує</option>
+                  <option value="NOT_STARTED">Очікує</option>
                   <option value="IN_PROGRESS">В процесі</option>
                   <option value="COMPLETED">Виконано</option>
-                  <option value="CANCELLED">Скасовано</option>
+                  <option value="OVERDUE">Прострочено</option>
                 </select>
               </div>
 
