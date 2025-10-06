@@ -19,10 +19,10 @@ app.use(helmet());
 // CORS
 app.use(cors({
   origin: [
-    config.frontend.url,
     'https://deadline-tracker-sand.vercel.app',
     'https://deadline-tracker.vercel.app',
-    'http://localhost:5173'
+    'http://localhost:5173',
+    config.frontend.url
   ],
   credentials: true,
 }));
