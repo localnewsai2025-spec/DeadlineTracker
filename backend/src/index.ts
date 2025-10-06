@@ -21,6 +21,7 @@ app.use(cors({
   origin: [
     config.frontend.url,
     'https://deadline-tracker.vercel.app',
+    'https://deadline-tracker-sand.vercel.app',
     'http://localhost:5173'
   ],
   credentials: true,
