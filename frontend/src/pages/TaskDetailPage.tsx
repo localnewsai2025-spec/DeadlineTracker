@@ -4,13 +4,13 @@ import { taskService } from '../services/taskService';
 import { Button } from '../components/ui/Button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
-import { ArrowLeft, Calendar, User, Flag } from 'lucide-react';
+import { ArrowLeft, Calendar, User } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 interface Task {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   deadline: string;
   status: string;
   priority: string;
