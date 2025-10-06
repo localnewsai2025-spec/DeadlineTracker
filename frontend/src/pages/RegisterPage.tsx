@@ -30,6 +30,8 @@ export const RegisterPage: React.FC = () => {
   const password = watch('password');
 
   const onSubmit = async (data: RegisterFormData) => {
+    console.log('📝 Form data:', data);
+    console.log('🔍 Form errors:', errors);
     setIsLoading(true);
     try {
       await registerUser({
@@ -40,6 +42,7 @@ export const RegisterPage: React.FC = () => {
       });
       navigate('/dashboard');
     } catch (error) {
+      console.error('❌ Registration error:', error);
       // Error is handled by the auth context
     } finally {
       setIsLoading(false);
@@ -64,7 +67,9 @@ export const RegisterPage: React.FC = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={handleSubmit(onSubmit, (errors) => {
+              console.log('❌ Form validation errors:', errors);
+            })} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <Input
                   label="Ім'я"
