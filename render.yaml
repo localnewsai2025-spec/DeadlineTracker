@@ -10,6 +10,10 @@ services:
         value: production
       - key: JWT_SECRET
         generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: deadline-tracker-db
+          property: connectionString
     healthCheckPath: /api/health
 
   - type: web
@@ -19,11 +23,8 @@ services:
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: ./frontend/dist
     envVars:
-      - key: REACT_APP_API_URL
-        fromService:
-          type: web
-          name: deadline-tracker-backend
-          property: host
+      - key: VITE_REACT_APP_API_URL
+        value: https://deadline-tracker-backend.onrender.com
 
 databases:
   - name: deadline-tracker-db
